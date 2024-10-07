@@ -85,7 +85,7 @@ class Movie {
             RatingsNode * RatingCurr = ratingsHead;
             while (RatingCurr) {
                 // display data
-                cout << "   >Rating #" << ratingsCount << ": " << RatingCurr->movieRating << endl;
+                cout << "   >Rating #" << ratingsCount << ": " << setprecision(RatingCurr->movieRating) << endl;
                 ratingsCount++;
                 // assing curr pointer to next memory location
                 RatingCurr = RatingCurr->nextRating;
@@ -108,8 +108,8 @@ class Movie {
 
 
 int main() {
-    const float MIN = 0.0;
-    const float MAX = 5.0;
+    const float MIN = 0;
+    const float MAX = 5;
     vector<Movie> movieVec;
 
     ifstream movieComments("/Users/ethandilk/Desktop/Computer Science/COMSC 210 - Program Design & Data Structures/Lab_19_Abstract_Automate/movie_input.txt");
@@ -120,13 +120,19 @@ int main() {
     }
     // initializing 2 Movie objects
     Movie m1("The Hunger Games"), m2("Saving Private Ryan");
+    movieVec.push_back(m1);
+    movieVec.push_back(m2);
+
     
-    unsigned seed = time(0);
-    srand(seed);
     // populate movie reviews for m1 & m2
     for (int i = 0; i < 3; i++){
         float tempRating1, tempRating2;
 
+        tempRating1 = 1.0 + static_cast<double>(rand()) / (RAND_MAX / (5.0 - 1.0));
+        tempRating2 = 1.0 + static_cast<double>(rand()) / (RAND_MAX / (5.0 - 1.0));
+
+        m1.insertRatingsNode(tempRating1);
+        m2.insertRatingsNode(tempRating2);
     }
 
     // populate movie comments for m1 & m2
@@ -139,8 +145,7 @@ int main() {
         m2.insertCommentsNode(tempComment1);
     }
 
-    m1.displayMovieInfo();
-    m2.displayMovieInfo();
+    
 
     return 0;
 }
