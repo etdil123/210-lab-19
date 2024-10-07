@@ -120,8 +120,7 @@ int main() {
     }
     // initializing 2 Movie objects
     Movie m1("The Hunger Games"), m2("Saving Private Ryan");
-    movieVec.push_back(m1);
-    movieVec.push_back(m2);
+    
 
     
     // populate movie reviews for m1 & m2
@@ -145,7 +144,13 @@ int main() {
         m2.insertCommentsNode(tempComment1);
     }
 
-    
+    movieVec.push_back(m1);
+    movieVec.push_back(m2);
 
+    for(Movie m : movieVec)
+    {
+        m.displayMovieInfo();
+    }
+    
     return 0;
 }
