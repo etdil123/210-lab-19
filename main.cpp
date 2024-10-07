@@ -122,13 +122,13 @@ int main() {
     Movie m1("The Hunger Games"), m2("Saving Private Ryan");
     
 
-    
+    srand(static_cast<unsigned>(time(0))); 
     // populate movie reviews for m1 & m2
     for (int i = 0; i < 3; i++){
         float tempRating1, tempRating2;
 
-        tempRating1 = 1.0 + static_cast<double>(rand()) / (RAND_MAX / (5.0 - 1.0));
-        tempRating2 = 1.0 + static_cast<double>(rand()) / (RAND_MAX / (5.0 - 1.0));
+        float tempRating1 = 1.0 + static_cast<float>(rand()) / (RAND_MAX / (4.0)); 
+        float tempRating2 = 1.0 + static_cast<float>(rand()) / (RAND_MAX / (4.0));
 
         m1.insertRatingsNode(tempRating1);
         m2.insertRatingsNode(tempRating2);
