@@ -70,23 +70,45 @@ class Movie {
         }
 
         void displayMovieInfo() {
-            cout << "Movie Title: " << movieTitle << 
+            int ratingsCount = 1, reviewCount = 1;
 
+            cout << "\nMovie Title: " << movieTitle << endl;
+            cout << "-------------------------" << endl;
 
+            cout << "Ratings for " << movieTitle << endl;
 
+            RatingsNode * RatingCurr = ratingsHead;
+            while (RatingCurr) {
+                // display data
+                cout << "   >Rating #" << ratingsCount << ": " << RatingCurr->movieRating << endl;
+                ratingsCount++;
+                // assing curr pointer to next memory location
+                RatingCurr = RatingCurr->nextRating;
+            }
+            
+            cout << "\nReviews for " << movieTitle << endl;
 
-
+            CommentsNode * commentsCurr = commentsHead;
+            while (commentsCurr) {
+                // display data
+                cout << "   >Review #" << reviewCount << ": " << commentsCurr->movieComments << endl;
+                reviewCount++;
+                // assing curr pointer to next memory location
+                commentsCurr = commentsCurr->nextComment;
+            }
+            cout << endl;
        }
-
-
 };
 
 
 
 int main() {
 
+    Movie m1("Hunger Games");
+    m1.insertRatingsNode(3.6);
+    m1.insertCommentsNode("This is good!");
 
-
+    m1.displayMovieInfo();
 
     return 0;
 }
