@@ -2,6 +2,9 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <cstdlib>
+#include <ctime>
+#include <iomanip>
 using namespace std;
 
 class Movie {
@@ -105,6 +108,8 @@ class Movie {
 
 
 int main() {
+    const float MIN = 0.0;
+    const float MAX = 5.0;
     vector<Movie> movieVec;
 
     ifstream movieComments("/Users/ethandilk/Desktop/Computer Science/COMSC 210 - Program Design & Data Structures/Lab_19_Abstract_Automate/movie_input.txt");
@@ -116,14 +121,26 @@ int main() {
     // initializing 2 Movie objects
     Movie m1("The Hunger Games"), m2("Saving Private Ryan");
     
+    unsigned seed = time(0);
+    srand(seed);
+    // populate movie reviews for m1 & m2
+    for (int i = 0; i < 3; i++){
+        float tempRating1, tempRating2;
 
+    }
 
-    // Movie m1("Hunger Games");
-    // m1.insertRatingsNode(3.6);
-    // m1.insertRatingsNode(5.0);
-    // m1.insertCommentsNode("This is good!");
+    // populate movie comments for m1 & m2
+    for (int i = 0; i < 3; i++){
+        string tempComment, tempComment1;
+        getline(movieComments, tempComment);
+        getline(movieComments, tempComment1);
 
-    // m1.displayMovieInfo();
+        m1.insertCommentsNode(tempComment);
+        m2.insertCommentsNode(tempComment1);
+    }
+
+    m1.displayMovieInfo();
+    m2.displayMovieInfo();
 
     return 0;
 }
