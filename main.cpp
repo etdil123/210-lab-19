@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <vector>
+#include <fstream>
 using namespace std;
 
 class Movie {
@@ -103,12 +105,25 @@ class Movie {
 
 
 int main() {
+    vector<Movie> movieVec;
 
-    Movie m1("Hunger Games");
-    m1.insertRatingsNode(3.6);
-    m1.insertCommentsNode("This is good!");
+    ifstream movieComments("/Users/ethandilk/Desktop/Computer Science/COMSC 210 - Program Design & Data Structures/Lab_19_Abstract_Automate/movie_input.txt");
 
-    m1.displayMovieInfo();
+    if (!movieComments){
+        cout << "Error opening file - please try again!" << endl;
+        exit(1);
+    }
+    // initializing 2 Movie objects
+    Movie m1("The Hunger Games"), m2("Saving Private Ryan");
+    
+
+
+    // Movie m1("Hunger Games");
+    // m1.insertRatingsNode(3.6);
+    // m1.insertRatingsNode(5.0);
+    // m1.insertCommentsNode("This is good!");
+
+    // m1.displayMovieInfo();
 
     return 0;
 }
