@@ -85,7 +85,7 @@ class Movie {
             RatingsNode * RatingCurr = ratingsHead;
             while (RatingCurr) {
                 // display data
-                cout << "   >Rating #" << ratingsCount << ": " << setprecision(RatingCurr->movieRating) << endl;
+                cout << "   >Rating #" << ratingsCount << ": " << RatingCurr->movieRating << endl;
                 ratingsCount++;
                 // assing curr pointer to next memory location
                 RatingCurr = RatingCurr->nextRating;
@@ -125,8 +125,6 @@ int main() {
     srand(static_cast<unsigned>(time(0))); 
     // populate movie reviews for m1 & m2
     for (int i = 0; i < 3; i++){
-        float tempRating1, tempRating2;
-
         float tempRating1 = 1.0 + static_cast<float>(rand()) / (RAND_MAX / (4.0)); 
         float tempRating2 = 1.0 + static_cast<float>(rand()) / (RAND_MAX / (4.0));
 
